@@ -1,9 +1,10 @@
-import os
 import sys
 from pathlib import Path
 
-# Get the absolute path to the project root
-ROOT_DIR = Path(__file__).parent.parent
+# Add project root to sys.path
+ROOT_DIR = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT_DIR))
 
-print(f"Project root configured at: {ROOT_DIR}")
+# Indicate testing mode so the backend uses the dummy model
+import os
+os.environ["TESTING"] = "1"
